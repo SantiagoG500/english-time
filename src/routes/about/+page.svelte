@@ -1,0 +1,3 @@
+<section class="section">
+  <h1>Acerca de</h1>
+</section>

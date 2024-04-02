@@ -1,0 +1,68 @@
+:root {
+  --first-color: hsl(234, 100%, 65%);
+  --second-color: hsl(0, 100%, 65%);
+  --third-color: hsl(180, 0%, 50%);
+
+  --light-bg: #F3EFEF;
+  --dark-bg: #2D3142;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: var(--light-bg);
+}
+
+/* =========== main container styles / grid container styles =========== */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+}
+.main-content {
+  height: 100%;
+}
+/* =========== main container styles / grid container styles =========== */
+
+/* =========== header styles =========== */
+.main-header, .main-footer, .ul, .main-header__section, .nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.main-header, .main-footer {
+  border-radius: .5em;
+}
+.main-header {
+  flex-direction: column;
+}
+/* =========== header styles =========== */
+
+
+/* =========== main-content styles =========== */
+.main-content {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+/* =========== main-content styles =========== */
+
+/* =========== section styles =========== */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+/* =========== section styles =========== */
+
+
+.ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  align-items: center;
+  gap: 1em;
+}
