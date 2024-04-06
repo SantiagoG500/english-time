@@ -3,13 +3,14 @@
   import Header from "$lib/components/header.svelte";
   import Footer  from "$lib/components/footer.svelte";
 
-  import { onAuthStateChanged } from 'firebase/auth';
   import { isLoggedIn, user } from '$lib/stores';
-  import { Auth } from '$lib/firebase';
-  // import { onMount } from 'svelte';
+  import { Auth, User } from '$lib/firebase';
+  import { onAuthStateChanged } from 'firebase/auth';
+
   onAuthStateChanged(Auth.authInfo, (authUser) => {
     $user = authUser;
     $isLoggedIn = !!authUser;
+    if (!!authUser) User.addUser(authUser)
   });
 
 </script>

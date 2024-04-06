@@ -1,8 +1,6 @@
-export function load({ setHeaders }) {
-	setHeaders({
-		'Cross-Origin-Embedder-Policy': 'unsafe-none'
-	});
-}
+// export async function load({ locals }) {
+// 	console.log(locals);
+// }
 // import { Auth } from '../../lib/firebase.js';
 
 // const PROVIDERS = ['google'];

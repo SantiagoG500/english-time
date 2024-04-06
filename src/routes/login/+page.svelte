@@ -1,23 +1,19 @@
 <script>
   import { Auth, User } from "$lib/firebase.js";
-  // import { getRedirectResult } from "firebase/auth";
-	// import { onMount } from 'svelte';
-
   import { isLoggedIn, user } from '$lib/stores.js';
 
-  // onMount(async () => {
-  //   const res = await getRedirectResult(Auth.authInfo)
-  // }) 
-
   const login = async () => {
-    const userInfo = await Auth.logIn()
-
+    const userInfo = await Auth.loginWithPopUp()
+1
     $user = userInfo.user
     $isLoggedIn = true
 
+    // console.log('from login page: ');
+    // console.log({$user, $isLoggedIn});
     User.addUser(userInfo.user)   
   }
   const logOut = () => Auth.logOut()
+
 </script>
 
 {#if $isLoggedIn}

@@ -1,4 +1,10 @@
-import { getAuth, GoogleAuthProvider, signInWithRedirect, signOut } from 'firebase/auth';
+import {
+	getAuth,
+	GoogleAuthProvider,
+	signInWithRedirect,
+	signInWithPopup,
+	signOut
+} from 'firebase/auth';
 import {
 	// collection,
 	doc,
@@ -27,10 +33,15 @@ const app = initializeApp(firebaseConfig);
 export const Auth = (() => {
 	const authInfo = getAuth(app);
 
-	const logIn = async () => {
+	const logInWithRedirect = async () => {
 		const GProvider = new GoogleAuthProvider();
 		const res = signInWithRedirect(authInfo, GProvider);
 
+		return res;
+	};
+	const loginWithPopUp = async () => {
+		const GProvider = new GoogleAuthProvider();
+		const res = await signInWithPopup(authInfo, GProvider);
 		return res;
 	};
 	const logOut = async () => {
@@ -45,7 +56,8 @@ export const Auth = (() => {
 
 	return {
 		authInfo,
-		logIn,
+		logInWithRedirect,
+		loginWithPopUp,
 		logOut
 	};
 })();
