@@ -12,13 +12,13 @@
         <a href="./blog" class="link">Blog</a>
       </li>
       <li class="li">
-        <a href="./course" class="link">Curso</a>
-      </li>
-      <li class="li">
         <a href="./about" class="link">Acerca de</a>
       </li>
-
+      
       {#if $isLoggedIn}
+      <li class="li">
+        <a href="./course" class="link">Curso</a>
+      </li>
       <li class="li">
         <a href="./login/" class="link">Account</a>
       </li>
