@@ -9,24 +9,23 @@
   <nav class="nav">
     <ul class="ul"> 
       <li class="li">
-        <a href="./blog" class="link">Blog</a>
+        <a href="/blog" class="link">Blog</a>
       </li>
       <li class="li">
-        <a href="./about" class="link">Acerca de</a>
+        <a href="/about" class="link">Acerca de</a>
       </li>
       
       {#if $isLoggedIn}
       <li class="li">
-        <a href="./course" class="link">Curso</a>
+        <a href="/course" class="link">Curso</a>
       </li>
       <li class="li">
-        <a href="./login/" class="link">Account</a>
+        <a href="/login/" class="link">Account</a>
       </li>
       {:else}
       <li class="li">
-        <a href="./login/" class="link">Login</a>
-      </li>
-        
+        <a href="/login/" class="link">Login</a>
+      </li> 
       {/if}
       <!-- <li class="li">About</li>
       <li class="li">no sé</li>

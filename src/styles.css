@@ -10,7 +10,9 @@
 body {
   margin: 0;
   height: 100vh;
-  background-color: var(--light-bg);
+  
+  color: var(--light-bg);
+  background-color: var(--dark-bg);
 }
 
 /* =========== main container styles / grid container styles =========== */
