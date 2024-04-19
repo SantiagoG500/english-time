@@ -1,14 +1,7 @@
 <script>
   export let data;
   const {posts} = data
-  // for (const post of posts) {
-  //   const {description, title, date, publishedBy} = post
-  //   console.log(description);
-  //   console.log(title);
-  //   console.log(date);
-  //   console.log(publishedBy);
-  // }
-
+  import BlogCard from '../../lib/components/blog-card.svelte';
 </script>
 
 <svelte:head>
@@ -16,18 +9,20 @@
 </svelte:head>
 
 <section class="section">
-  <h1>Blog</h1>
+  <h2 class="title">Post recientes</h2>
 
-  <article class="blogs">
-    <h2>Recent posts</h2>
+  <article class="posts-cont">
 
     {#each posts as post}
-      {post.title} <br>
-      {post.description} <br>
-      
-      {post.date} <br>
-      {post.publishedBy} <br>
-      
+      <BlogCard 
+        title={post.title}
+        description={post.description}
+        date={post.date}
+        publishedBy={post.publishedBy}
+        route={`/blog/${post.slug}`}
+        categories={post.categories}
+      />
+
     {/each}
 
   </article>

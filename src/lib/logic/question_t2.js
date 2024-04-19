@@ -10,7 +10,7 @@ export const QuestionT2 = () => {
 	const setRawText = (value = '') => {
 		rawText = value;
 		formatText();
-		// console.log({ rawText, textWithFormat, textWithHTML, correctText, options });
+		console.log({ rawText, textWithFormat, textWithHTML, correctText, options });
 	};
 	const setCorrectText = (replaceCode, value) => {
 		// console.log({ replaceCode, value });
@@ -20,8 +20,6 @@ export const QuestionT2 = () => {
 		if (!correctText) correctText = textWithFormat;
 		correctText = correctText.replace(replaceCode, value);
 	};
-	// const setOPtions = (value = {}) => options;
-
 	const getRawText = () => rawText;
 	const getTextWithFormat = () => textWithFormat;
 	const getTextWithHTML = () => textWithHTML;

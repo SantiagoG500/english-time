@@ -1,36 +1,34 @@
 <script>
-  // export let logged
   import { isLoggedIn } from "$lib/stores.js";
 </script>
-<!-- about, curso, blog, login? -->
 <header class="main-header">
-  <section class="main-header__section"><h2>English Time</h2></section>
-  <section class="main-header__section"><h2>section</h2></section>
-  <nav class="nav">
-    <ul class="ul"> 
-      <li class="li">
-        <a href="/blog" class="link">Blog</a>
+  <section class="main-header__section">
+    <h2 class="poppins-bold">English Time</h2>
+  </section>
+  <!-- <section class="main-header__section">
+    <h2 class="poppins-bold">section</h2>
+  </section> -->
+  <nav class="main-header__nav">
+    <ul class="ul main-header__ul"> 
+      <li class="li main-header__li">
+        <a href="/blog" class="poppins-regular link main-header__a">Blog</a>
       </li>
-      <li class="li">
-        <a href="/about" class="link">Acerca de</a>
+      <li class="li main-header__li">
+        <a href="/about" class="poppins-regular link main-header__a">Acerca de</a>
       </li>
       
       {#if $isLoggedIn}
-      <li class="li">
-        <a href="/course" class="link">Curso</a>
+      <li class="li main-header__li">
+        <a href="/course" class="poppins-regular link main-header__a">Curso</a>
       </li>
-      <li class="li">
-        <a href="/login/" class="link">Account</a>
+      <li class="li main-header__li">
+        <a href="/login/" class="poppins-regular link main-header__a">Account</a>
       </li>
       {:else}
-      <li class="li">
-        <a href="/login/" class="link">Login</a>
+      <li class="li main-header__li">
+        <a href="/login/" class="poppins-regular link main-header__a">Login</a>
       </li> 
       {/if}
-      <!-- <li class="li">About</li>
-      <li class="li">no sé</li>
-      <li class="li">Qué</li>
-      <li class="li">Poner</li> -->
     </ul>
   </nav>
 </header>
