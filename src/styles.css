@@ -1,6 +1,6 @@
 :root {
-  --first-color: hsl(234, 100%, 65%);
-  --second-color: hsl(0, 100%, 65%);
+  --first-color: hsl(0, 100%, 65%);
+  --second-color: hsl(234, 100%, 65%);
   --third-color: hsl(180, 0%, 50%);
 
   --light-bg: #F3EFEF;
@@ -13,216 +13,97 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Poppins','Courier New', Courier, monospace;
+  height: 100vh;
+  height: min-content;
+
+  /* height: min-content; */
+  /* background-color: #6f779c;  */
+
+  color: var(--dark-bg);
+  background-color: rebeccapurple;
+
 }
 
-/* =========== main container styles / grid container styles =========== */
-.main-container {
+/* =========== flex layouts =========== */
+body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  height: 100%;
+  background-color: var(--light-bg);
 }
-.main-content {
-  height: 100%;
-}
-/* =========== main container styles / grid container styles =========== */
 
-/* =========== header styles =========== */
-.main-header, .main-footer, .ul, .main-header__section, .nav {
+.post-container, .question-container {
   display: flex;
-  justify-content: space-evenly;
-}
-.main-header, .main-footer {
-  border-radius: .5em;
-}
-.main-header {
-  flex-direction: column;
-  box-shadow: var(--box-shadow);
-}
+  flex-wrap: wrap;
+  gap: .5em; 
 
-.main-header__nav {
-  min-height: 4rem;
-}
+  padding-left: .5em;
+  padding-right: .5em;
 
-.main-header__ul {
-  margin-top: 0;
-  margin-bottom: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-.main-header__li, .main-header__ul {
-  height: 100%;
-  /* display: inline-block; */
+.question-container {
+  justify-content: left;
 }
-.main-header__li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.main-header__a {
-  text-align: center;
-}
-/* create a sparate css file with media queries */
-
-.main-header__li:hover {
-  border-bottom: 5px solid var(--first-color);
-}
-
-/* =========== header styles =========== */
-
-
-/* =========== main-content styles =========== */
-.main-content {
-  display: flex;
-  justify-content: center;
-  padding: 1em;
-}
-/* =========== main-content styles =========== */
-
-/* =========== section styles =========== */
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  width: 100%;
-}
-.posts-cont {
-  display: grid;
-  grid-auto-columns: min-content;
-  /* background-color: rebeccapurple; */
-}
-/* =========== section styles =========== */
-
-
-/* =========== font styles =========== */
-.poppins-thin {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.poppins-thin-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.poppins-extralight {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.poppins-light {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.poppins-light-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.poppins-regular-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.poppins-medium-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.poppins-semibold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.poppins-semibold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.poppins-bold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.poppins-bold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.poppins-extrabold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.poppins-extrabold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.poppins-black {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.poppins-black-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
-
-/* =========== font styles =========== */
+/* =========== flex layouts =========== */
 
 /* =========== text styles =========== */
-.ul {
-  list-style: none;
-  padding-left: 0;
+.text, .title {
+  color: var(--dark-bg);
 }
-.link {
+.text--light-color, .title--light-color {
+  color: var(--light-bg-bg);
+}
+.text--thin { font-weight: 100; }
+.text--extralight { font-weight: 200; }
+.text--light { font-weight: 300; }
+.text--regular { font-weight: 400; }
+.text--medium { font-weight: 500; }
+.text--semi-bold { font-weight: 600; }
+.text--bold { font-weight: 700; }
+.text--extra-bold { font-weight: 800; }
+.text--black { font-weight: 900; }
+
+.title {font-weight: 700; }
+
+.a {
   text-decoration: none;
   color: var(--dark-bg);
+  
 }
-.link:hover {
+.a:hover {
   color: var(--first-color);
 }
-
-.title, .subtitle, .txt {
-  color: var(--dark-bg);
-
-}
-.title {
-  text-align: center;
-}
-
 /* =========== text styles =========== */
+
+/* =========== content styles =========== */
+.section {
+  width: 85%;
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* =========== content styles =========== */
+
+/* =========== Button styles =========== */
+
+.btn {
+
+}
+.btn--focused {
+
+  background-color: var(--first-color);
+}
+
+/* =========== Button styles =========== */
+

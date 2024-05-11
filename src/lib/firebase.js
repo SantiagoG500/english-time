@@ -107,7 +107,8 @@ export const User = (() => {
 		await setDoc(docRef, {
 			name: displayName,
 			uid,
-			email
+			email,
+			exams: []
 		});
 	};
 

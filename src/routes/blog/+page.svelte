@@ -2,6 +2,21 @@
   export let data;
   const {posts} = data
   import BlogCard from '../../lib/components/blog-card.svelte';
+  import { isLoggedIn } from '$lib/stores.js'
+  import { Database } from '$lib/firebase.js'
+
+  const categorySet = new Set()
+  for (const post of posts) {
+    const {categories} = post
+    for (const category of categories) 
+      categorySet.add(category)
+  }    
+
+  if ($isLoggedIn) {
+    for (const category of categorySet) {
+      Database.addData('categories', category, {category})
+    }
+  }
 </script>
 
 <svelte:head>
@@ -11,7 +26,7 @@
 <section class="section">
   <h2 class="title">Post recientes</h2>
 
-  <article class="posts-cont">
+  <article class="post-container">
 
     {#each posts as post}
       <BlogCard 

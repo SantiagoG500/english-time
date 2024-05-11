@@ -17,47 +17,132 @@
   }
 </script>
 
-<section class="blog-card">
-  <header class="blog-card__header">
-    <h2 class="subtitle">{title}</h2>
-  </header>
+  <section class="blog-card">
+    <header class="blog-card__header">
+      <h2 class="title title--blog-header">{title}</h2>
+    </header>
+    
+    <section class="blog-card__section">
+      <span class="text"> {description} </span>
+      <span class="text"> {date} </span>
+      <span class="text"> {publishedBy}</span>
+    </section>
+    <section class="blog-card__categories">
+      {#each categories as category}
+         <span class="blog-card__category text text--light" style={`background-color: ${randomColor()};`}>{category}</span>
+      {/each}
+    </section>
   
-  <section class="blog-card__section">
-    <!-- <span> {title} </span> -->
-    <span class="txt"> {description} </span>
-    <span class="txt"> {date} </span>
-    <span class="txt"> {publishedBy}</span>
+    <footer class="blog-card__footer">
+      <a href={route} class="a">Leer</a>
+    </footer>
   </section>
-  <section class="blog-card__categories">
-    {#each categories as category}
-       <!-- <span class="blog-card__category" style={`border-color: ${randomColor()}; background-color: ${randomColor()};`}>{category}</span> -->
-       <span class="blog-card__category txt" style={`border-color: ${randomColor()};`}>{category}</span>
-    {/each}
-  </section>
-
-  <footer class="blog-card__footer">
-    <a href={route} class="link">Leer</a>
-  </footer>
-</section>
 
 <style>
-  .blog-card, .blog-card__categories, .blog-card__section {
-    display: flex;
-    flex-direction: column;
-  }
-  .blog-card__categories, .blog-card__section, .blog-card__footer{
-    padding: 1em;
-  }
-  .blog-card{
-    gap: 1em;
-    padding: 1em;
-    border: 1px solid black;
+  .title--blog-header {
+    margin: 0;
   }
 
+  .blog-card, .blog-card__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-wrap: wrap;
+  }
+  .blog-card {
+    position: relative;
+
+    gap: 1em;
+    padding: 1em;
+    border: 2px solid var(--dark-bg);
+    border-radius: .5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    
+    transition: all 450ms ease-out 0s;
+    min-height: 2rem;
+    flex: 1 1 300px;
+
+    overflow: hidden;
+  }
+
+  .blog-card:hover::after {
+    position: absolute;
+
+    right: -4rem;
+    bottom: -2rem;
+    transform: skewX(-20deg);
+    
+    content: " ";
+    width: 40px;
+    height: 200px;
+
+
+    background-color: var(--first-color);
+  }
+  .blog-card:hover::before {
+    position: absolute;
+    right: -4rem;
+    bottom: -4rem;
+    transform: skewX(-20deg);
+
+    
+    content: " ";
+    width: 40px;
+    height: 200px;
+    background-color: var(--second-color);
+  }
+
+  @keyframes moveFirstElement {
+    0% {right: -3.5rem;}
+    25% {right: -3rem;}
+    50% {right: -2rem;}
+    75% {right: -1rem;}
+    100% {right: -0.2rem;}
+  }
+  @keyframes moveSecondElement {
+    0% {right: -3rem;}
+    25% {right: -2.5rem;}
+    50% {right: -2.3rem;}
+    75% {right: -2.1rem;}
+    100% {right: -1rem;}
+  }
+
+ .blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 10px 10px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  .blog-card:hover::before{
+    animation: moveSecondElement .05s ease-in-out forwards;
+  }
+  .blog-card:hover::after{
+    animation: moveFirstElement .05s ease-in-out forwards;
+  }
+
+  /* 
+    after: 
+      right: -0.2rem;
+      bottom: -2rem;
+      transform: skewX(-20deg);
+    
+    before
+      right: -1rem;
+      bottom: -4rem;
+      transform: skewX(-20deg);
+  
+  */
+  
   .blog-card__categories {
     display: flex;
-    flex-direction: row;
-    gap: .5rem;
+    flex-wrap: wrap;
+    gap: .5em;
+
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    /* gap: .5em; */
+    /* background-color: aqua; */
+
+    /* background-color: aquamarine; */
   }
   
   .blog-card__category {
@@ -65,15 +150,10 @@
     padding-right: 1em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-
-    border-width: 3px;
-    border-style: solid;
+    
     border-radius: .5em;
-    /* color: white; */
-    /* border: 3px solid red; */
-    /* border-color: hsl(85, 50%, 70%); */
-    /* border-color: hsl(360, 50%, 70%); */
-;
+
+    font-size: .8rem;
   }
-  
+
 </style>

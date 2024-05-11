@@ -1,93 +1,102 @@
+// import { limit } from 'firebase/firestore';
+// import { questionsT1 } from '../data';
+
 export const QuestionT2 = () => {
-	let rawText = '';
+	let text = '';
+	let textMatches = [];
 	let textWithFormat = '';
 	let textWithHTML = '';
-	let correctText = '';
+	let categories = [];
 
-	const options = {};
-	const questionId = returnRandN(10000);
+	let options = [];
+	let correctOptions = [];
 
-	const setRawText = (value = '') => {
-		rawText = value;
-		formatText();
-		console.log({ rawText, textWithFormat, textWithHTML, correctText, options });
+	const setText = (rawText = '', correctChoices = []) => {
+		text = rawText;
+		correctOptions = [...correctChoices];
+		__extractOptions();
+		__formatText();
+		__formatToHTML();
 	};
-	const setCorrectText = (replaceCode, value) => {
-		// console.log({ replaceCode, value });
-		// console.log(options);
-		// console.log(options[replaceCode]);
+	const setCategories = (...value) => (categories = [...value]);
 
-		if (!correctText) correctText = textWithFormat;
-		correctText = correctText.replace(replaceCode, value);
-	};
-	const getRawText = () => rawText;
-	const getTextWithFormat = () => textWithFormat;
+	const getText = () => text;
 	const getTextWithHTML = () => textWithHTML;
-	const getCorrectText = () => correctText;
+	const getTextWithFormat = () => textWithHTML;
+	const getCategories = () => categories;
+	const getCorrectOptions = () => correctOptions;
 	const getOptions = () => options;
-	const getQuestionId = () => questionId;
 
-	const formatText = () => {
+	const __extractOptions = () => {
 		const regEx = /\[(.*?)\]/g;
-		const matches = rawText.match(regEx);
+		let matches = text.match(regEx);
 
 		if (!matches) return;
 
-		textWithFormat = rawText;
-		for (const match of matches) {
-			const randKey = returnRandN(1000);
-			options[randKey] = match.slice(1, -1);
-			textWithFormat = textWithFormat.replace(match, randKey);
+		const geenrateKey = () => Math.floor(Math.random() * 1000);
+
+		for (let i = 0; i < matches.length; i++) {
+			const randKey = geenrateKey();
+
+			correctOptions[i] = { [randKey]: correctOptions[i] };
+			textMatches.push({ [randKey]: matches[i] });
+			options.push({
+				[randKey]: matches[i]
+					.slice(1, -1) // cuts the brackets
+					.split(',') // split the options separated by commas
+					.map((m) => m.trim()) // trims in every option
+			});
+
+			// console.log({ textMatches, options, correctOptions });
 		}
-		formatHTML();
 	};
-	const formatHTML = () => {
+
+	const __formatText = () => {
+		textWithFormat = text;
+		for (const match of textMatches) {
+			const matchEntries = Object.entries(match).pop();
+			textWithFormat = textWithFormat.replace(matchEntries[1], matchEntries[0]);
+		}
+	};
+	const __formatToHTML = () => {
+		const selectToHTML = options.map((optionObj) => {
+			const key = Object.keys(optionObj).pop();
+			let selectTemplate = '';
+			for (const key in optionObj) selectTemplate = __createTemplateHTML(optionObj[key], key);
+			return { [key]: selectTemplate };
+		});
 		textWithHTML = textWithFormat;
+		for (const select of selectToHTML) {
+			const objToArray = Object.entries(select).pop();
 
-		for (const key in options) {
-			const optionsValue = options[key];
-			if (!textWithHTML.includes(key)) return;
+			const key = objToArray[0];
+			const data = objToArray[1];
 
-			const selectTEmplate = createTemplateHTML(optionsValue, key);
-			textWithHTML = textWithHTML.replace(key, selectTEmplate);
+			textWithHTML = textWithHTML.replace(key, data);
 		}
 	};
-	const createTemplateHTML = (optionsValue, optionsKey) => {
-		const options = optionsValue.split(',').map((str) => str.trim());
-
+	const __createTemplateHTML = (options = [], key) => {
 		let optionsTemplate = '';
+
+		console.log({ options, key });
 		for (const option of options) {
-			optionsTemplate += `<option value="${option}">${option}</option>`;
+			optionsTemplate += `<option value="${option}"> ${option} </option>`;
 		}
-		const selectTemplate = `<select name="${optionsKey}" id="${questionId}">${optionsTemplate}</select>`;
+		const selectTemplate = `<select name="${key}">${optionsTemplate}</select>`;
 
 		return selectTemplate;
 	};
 
-	function returnRandN(limit) {
-		return Math.round(Math.random() * limit);
-	}
-
 	return {
-		getRawText,
-		getTextWithFormat,
-		getTextWithHTML,
-		getCorrectText,
-		getOptions,
-		getQuestionId,
+		setText,
+		setCategories,
+		// setOptions,
 
-		setRawText,
-		setCorrectText
+		getText,
+		getTextWithHTML,
+		getTextWithFormat,
+		getCategories,
+		getOptions,
+		getCorrectOptions
 	};
 };
-
-// const xd = QuestionT2();
-// xd.setRawText('Hola, [esto, es un, ejemplo]');
-
-// console.log('------------ datos ------------');
-// console.log('raw text: ' + xd.getRawText());
-// console.log('Options ' + JSON.stringify(xd.getOptions()));
-// console.log('Correct Text ' + xd.getCorrectText());
-// console.log('Text with html ' + xd.getTextWithHTML());
-// console.log('Text with Format ' + xd.getTexttWithFormat());
-// console.log();

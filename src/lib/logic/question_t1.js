@@ -1,36 +1,45 @@
 export const QuestionT1 = () => {
 	let question = '';
-	let answers = new Set();
+	let answers = [];
 
 	let userAns = '';
 	let correctAns = '';
 	let ansIsCorrect = false;
+	let categories = [];
 
 	const setQuestion = (value) => (question = value);
-	const setAswers = (value) => (answers = value);
+	const setAnswers = (value) => (answers = [...value]);
 
 	const setUserAns = (value) => (answers = value);
-	const setCorrectAns = (value) => (answers = value);
-	const setAnsIsCorrect = (value) => (answers = value);
+	const setCorrectAns = (value) => (correctAns = value);
+	const setCategories = (...value) => {
+		categories = [...value];
+	};
+	// const setAnsIsCorrect = (value) => (answers = value);
 
 	const getQuestion = () => question;
-	const getAswers = () => answers;
+	const getAnswers = () => answers;
 
 	const getUserAns = () => userAns;
 	const getCorrectAns = () => correctAns;
 	const getAnsIsCorrect = () => ansIsCorrect;
+	const getCategories = () => {
+		return categories;
+	};
 
 	return {
 		setQuestion,
-		setAswers,
+		setAnswers,
 		setUserAns,
 		setCorrectAns,
-		setAnsIsCorrect,
+		setCategories,
+		// setAnsIsCorrect,
 
 		getQuestion,
-		getAswers,
+		getAnswers,
 		getUserAns,
 		getCorrectAns,
-		getAnsIsCorrect
+		getAnsIsCorrect,
+		getCategories
 	};
 };
