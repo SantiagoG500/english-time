@@ -24,6 +24,9 @@
       <li class="main-header__li">
         <a href="/login/" class="a a--main-header">Account</a>
       </li>
+      <li class="main-header__li">
+        <a href="/results/" class="a a--main-header">Resultados</a>
+      </li> 
       {:else}
       <li class="main-header__li">
         <a href="/login/" class="a a--main-header">Login</a>

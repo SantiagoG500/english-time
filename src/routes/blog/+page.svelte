@@ -1,11 +1,11 @@
 <script>
   export let data;
-  const {posts} = data
+  const {posts, filtered} = data
   import BlogCard from '../../lib/components/blog-card.svelte';
   import { isLoggedIn } from '$lib/stores.js'
   import { Database } from '$lib/firebase.js'
-
   const categorySet = new Set()
+  
   for (const post of posts) {
     const {categories} = post
     for (const category of categories) 

@@ -1,6 +1,7 @@
 <script>
   import { Auth, User, Database } from "$lib/firebase.js";
   import { isLoggedIn, user } from '$lib/stores.js';
+	import { onMount } from 'svelte';
 
   const login = async () => {
     const userInfo = await Auth.loginWithPopUp()
@@ -13,8 +14,15 @@
 
     if (!foundUser) User.addUser(userInfo.user)   
     else console.log(`Usuario ${userInfo.user.displayName} ya está en la base de datos`);
+
   }
   const logOut = () => Auth.logOut()
+
+  onMount(async () => {
+    const uid = $user.uid
+    const userRequest = await Database.getDocument('users', uid)
+    console.log(userRequest);    
+  })
 
 </script>
 

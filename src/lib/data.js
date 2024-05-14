@@ -24,7 +24,7 @@ fourthQ.setCategories('Filosofía');
 thirdQ.setQuestion('How do you feel today?');
 thirdQ.setAnswers(['Yes, I do', 'I dunno', 'yes very well mondongo 🗿', 'good 🗽']);
 thirdQ.setCorrectAns(thirdQ.getAnswers()[2]);
-thirdQ.setCategories('Inglés');
+thirdQ.setCategories('Inglés', 'Filosofía');
 
 questionsT1.push(firstQ);
 questionsT1.push(secondQ);
