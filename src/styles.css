@@ -1,18 +1,24 @@
 :root {
   --first-color: hsl(0, 100%, 65%);
+  --first-color-lighter: hsl(0, 100%, 75%);
   --second-color: hsl(234, 100%, 65%);
+  --second-color-ligther: hsl(234, 100%, 75%);
   --third-color: hsl(180, 0%, 50%);
 
   --light-bg: #F3EFEF;
   --dark-bg: #2D3142;
 
+  --font-size-title: clamp(1.5rem, 2.5vw, 3.5rem);
+  --font-size-text: clamp(1rem, 1.5vw, 1.5rem);
+  
   --box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  --font-family: 'Poppins','Courier New', Courier, monospace;
 }
 
 body {
   margin: 0;
   height: 100vh;
-  font-family: 'Poppins','Courier New', Courier, monospace;
+  font-family: var(--font-family);
   height: 100vh;
   height: min-content;
 
@@ -30,9 +36,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--light-bg);
+  min-height: 100vh;
 }
 
-.post-container, .question-container {
+.post-container {
   display: flex;
   flex-wrap: wrap;
   gap: .5em; 
@@ -43,15 +50,34 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.question-container {
-  justify-content: left;
+.question-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
+
 /* =========== flex layouts =========== */
 
 /* =========== text styles =========== */
+
+.text {
+  font-size: var(--font-size-text);
+}
+.title {
+  font-size: var(--font-size-title);
+}
+
 .text, .title {
   color: var(--dark-bg);
 }
+.title--color-1{
+  color: var(--first-color);
+}
+.title--color-2{
+  color: var(--second-color);
+}
+
+
 .text--light-color, .title--light-color {
   color: var(--light-bg-bg);
 }
@@ -66,8 +92,12 @@ body {
 .text--black { font-weight: 900; }
 
 .title {font-weight: 700; }
+.title--centered, .text--centered {
+  text-align: center;
+}
 
 .a {
+
   text-decoration: none;
   color: var(--dark-bg);
   
@@ -75,11 +105,20 @@ body {
 .a:hover {
   color: var(--first-color);
 }
+
+.text--color-1 {
+  color: var(--first-color);
+}
+
+.text--color-2 {
+  color: var(--second-color);
+}
 /* =========== text styles =========== */
 
 /* =========== content styles =========== */
 .section {
-  width: 85%;
+  width: 90%;
+  /* background-color: rebeccapurple; */
 }
 .main-content {
   display: flex;
@@ -87,21 +126,56 @@ body {
 
   padding-top: 1rem;
   padding-bottom: 1rem;
+
+  flex-grow: 1;
 }
-.profile-container {
+
+.profile-container,
+.profile-container__header,
+.profile-container__content,
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
+}
+.profile-container__header,
+.profile-container__content {
+  width: 100%;
+}
+
+
+.login-form {
+  height: 100%;
+  justify-content: center;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  overflow: hidden;
 }
 /* =========== content styles =========== */
 
 /* =========== Button styles =========== */
 
 .btn {
+  font-size: 1rem;
+  font-family: var(--font-family);
+  font-weight: 500;
 
+  border: 2px solid var(--dark-bg);
+  border-radius: .5em;
+  padding: .5em;
+
+  transition: background-color .3s ease, color .3s ease;
+}
+.btn:hover{
+  border: 2px solid var(--light-bg);
+
+  background-color: var(--first-color);
+  color: var(--light-bg);
 }
 .btn--focused {
-
   background-color: var(--first-color);
 }
 

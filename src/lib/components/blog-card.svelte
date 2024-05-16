@@ -23,13 +23,13 @@
     </header>
     
     <section class="blog-card__section">
-      <span class="text"> {description} </span>
-      <span class="text"> {date} </span>
-      <span class="text"> {publishedBy}</span>
+      <span class="text text--bold"> {description} </span>
+      <span class="text text--semi-bold"> {date} </span>
+      <span class="text text--semi-bold"> {publishedBy}</span>
     </section>
     <section class="blog-card__categories">
       {#each categories as category}
-         <span class="blog-card__category text text--light" style={`background-color: ${randomColor()};`}>{category}</span>
+         <span class="text text--bold blog-card__category text text--light" style={`background-color: ${randomColor()};`}>{category}</span>
       {/each}
     </section>
   

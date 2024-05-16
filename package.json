@@ -27,6 +27,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"chart.js": "^4.4.2",
+		"chartjs-plugin-autocolors": "^0.2.2",
 		"firebase": "^10.10.0"
 	}
 }

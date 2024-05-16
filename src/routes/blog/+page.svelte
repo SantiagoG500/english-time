@@ -12,11 +12,11 @@
       categorySet.add(category)
   }    
 
-  if ($isLoggedIn) {
-    for (const category of categorySet) {
-      Database.addData('categories', category, {category})
-    }
-  }
+  // if ($isLoggedIn) {
+  //   for (const category of categorySet) {
+  //     Database.addData('categories', category, {category})
+  //   }
+  // }  
 </script>
 
 <svelte:head>

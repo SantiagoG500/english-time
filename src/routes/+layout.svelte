@@ -4,7 +4,7 @@
   import Footer  from "$lib/components/footer.svelte";
   import { Database }  from "$lib/firebase.js";
 
-  import { questionsT1} from '$lib/data.js';
+  import { questions } from '$lib/data.js';
   import { isLoggedIn, user } from '$lib/stores';
   import { Auth, User } from '$lib/firebase';
   import { onAuthStateChanged } from 'firebase/auth';
@@ -14,26 +14,22 @@
   $user = authUser;
   $isLoggedIn = !!authUser;
 
-  // if ($isLoggedIn) {
-  //   for (const question of questionsT1) {
-  //     const q = question.getQuestion()
-  //     const a = question.getAnswers()
-  //     const correctA = question.getCorrectAns()
-  //     const categories = question.getCategories()
-  //     const questionT = 'T1'
+    if ($isLoggedIn) {
+      // console.log(questions);
+      // for (const question of questions) {
+      //   const q = question.getQuestion()
+      //   const a = question.getAnswers()
+      //   const correctA = question.getCorrectAns()
+      //   const categories = question.getCategories()
+      //   const questionT = 'T1'
 
-  //     const docData = {question: q, answers: a, correctAnswer: correctA, questionType: questionT, categories}
-  //     Database.addData('questions', q, docData)
-  //   }
-  // }
+      //   const docData = {question: q, answers: a, correctAnswer: correctA, questionType: questionT, categories}
+      //   console.log(docData);
+      // }
+      // Database.addData('questions', q, docData)
+    }
   }); 
-  // onMount(async () => {
 
-  //   const xd = await User.getUser('añsldf')
-  //   console.log(xd);
-  
-  // })
-  
 
 </script>
 

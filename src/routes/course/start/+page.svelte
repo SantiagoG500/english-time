@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "$app/navigation";
   import { user } from "$lib/stores.js";
   import { Database } from "$lib/firebase.js";
 	import { onMount } from 'svelte';
@@ -11,6 +12,8 @@
   let userAnswers = []
   let userAnswer = undefined
 
+ let filteredQuestions = []
+
   $: question = ''
   $: answers = []
 
@@ -21,7 +24,10 @@
 
   onMount(async() => {
     const res = await Database.getDocuments('questions')
-    const filteredQuestions = res.filter(q => q.categories.includes(category))
+    filteredQuestions = res.filter(q => {
+      return  q.categories.includes(category)
+    })
+
     questions = [... filteredQuestions]
     userAnswers = [... filteredQuestions]
     const firstQ = filteredQuestions.shift()
@@ -32,24 +38,28 @@
   })
   
   const goNextQ = () => {
-    if (questionIndex === questions.length - 1) return
+    if (questionIndex === filteredQuestions.length) return
     questionIndex++;
-
+    
     currentQ = questions[questionIndex]
     
     question = currentQ.question
     answers = currentQ.answers
     userAnswer = currentQ.userAns
+
+    // console.log(questionIndex);
   }
   const goPrevQ = () => {
     if (questionIndex <= 0) return
     questionIndex--;
-
-    currentQ = questions[questionIndex]
+    
+    currentQ = filteredQuestions[questionIndex]
     
     question = currentQ.question
     answers = currentQ.answers
     userAnswer = currentQ.userAns
+
+    // console.log(questionIndex);
   }
   const goToQuestion = (e) =>{
     const target = e.target
@@ -95,17 +105,42 @@
       exams.splice(exams.indexOf(foundedExam), 1, questionary)
       Database.updateData('users', uid, exams, 'exams')
     }
-    
+    goto('/results')
   }
 </script>
+<section class="section">
+  <h1 class="title">Cuestionario de: {category}</h1>
+  <h2 class="title">{question}</h2>
+  <div class="controller">
+  
+    <div class="controller__go-to">
+      {#each questions as _, index}
+         <button
+          class="btn"
+          value={index}
+          on:click={goToQuestion}
+          class:selected={index === questionIndex}
+          >
+          {index + 1}
+        </button>
+      {/each}
+    </div>
+    <div class="controller__go-step">
+      <button class="btn" on:click={goPrevQ}>prev</button>
+      <button class="btn" on:click={goNextQ}>next</button>
+    </div>
 
-<section>
-  <h2>{question}</h2>
-   <ul>
+    {#if everyQuestionAnswered}
+      <button class="btn" on:click={finishAll}>Finalizar Prueba</button>
+    {/if}
+  </div>
+
+   <ul class="questions">
     {#each answers as answer}
-      <li>
+      <li class="questions__question">
 
-        <input type="radio" 
+        <input class="questions__input text text--medium"
+          type="radio" 
           on:click={addAns}
           name={question}
           id={answer}
@@ -120,34 +155,45 @@
   </ul>
 
   {#if userAnswer}
-     <p>Tu Respuesta: {userAnswer}</p>
+     <p class="text text--medium">Tu Respuesta: <strong>{userAnswer}</strong></p>
   {/if}
-
-
 </section>
-  <div class="controler">
-    <button on:click={goPrevQ}>prev</button>
-    <button on:click={goNextQ}>next</button>
-
-    {#each questions as _, index}
-       <button
-        value={index}
-        on:click={goToQuestion}
-        class:selected={index === questionIndex}
-        >
-        {index + 1}
-      </button>
-    {/each}
-
-    {#if everyQuestionAnswered}
-      <button on:click={finishAll}>Finalizar Prueba</button>
-    {/if}
-  </div>
 
 
 
 <style>
-  .selected {
-    background-color: rebeccapurple;
+  .controller {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    border-top: 3px solid var(--dark-bg);
+    border-bottom: 3px solid var(--dark-bg);
+    /* background-color: rebeccapurple; */
+  }
+  .controller__go-step, .controller__go-to {
+    display: flex;
+    /* justify-content: center; */
+    gap: .4em;
+
+    width: 100%;
+  }
+
+  .questions {
+    list-style: none;
+    padding-left: 0;
+  }
+  .questions__question {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  .questions__input {
+    margin: 0;
   }
 </style>

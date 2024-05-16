@@ -4,8 +4,9 @@ description: primer articulo de prueba
 date: '2023-11-7'
 
 categories:
-  - Inglés
-  - Filosofía
+  - Be verbs
+  - Nouns
+  - Action Verbs
 
 published: true
 publishedBy: 'Roy Batty'
