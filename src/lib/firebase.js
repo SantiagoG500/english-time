@@ -6,7 +6,7 @@ import {
 	signOut
 } from 'firebase/auth';
 import {
-	// collection,
+	collection,
 	doc,
 	getFirestore,
 	setDoc,
@@ -66,14 +66,13 @@ export const Database = (() => {
 	const db = getFirestore(app);
 
 	const getDocuments = async (collName = '') => {
-		// const colRef = collection(db, collName);
 		const colRef = collection(db, collName);
 		const docQuery = query(colRef);
 		const querySanpshot = (await getDocs(docQuery)).docs;
 
-		const collection = [];
-		for (const doc of querySanpshot) collection.push({ ...doc.data() });
-		return collection;
+		const collections = [];
+		for (const doc of querySanpshot) collections.push({ ...doc.data() });
+		return collections;
 	};
 
 	const getDocument = async (collName = '', docName = '') => {
@@ -108,9 +107,16 @@ export const User = (() => {
 		await setDoc(docRef, {
 			name: displayName,
 			uid,
-			email
+			email,
+			exams: []
 		});
 	};
 
-	return { addUser };
+	const getUser = async (uid) => {
+		const document = doc(Database.db, 'users', uid);
+		const docSnapshot = await getDoc(document);
+		return docSnapshot.data();
+	};
+
+	return { addUser, getUser };
 })();

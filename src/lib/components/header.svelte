@@ -1,37 +1,107 @@
 <script>
-  // export let logged
   import { isLoggedIn } from "$lib/stores.js";
 </script>
-<!-- about, curso, blog, login? -->
 <header class="main-header">
-  <section class="main-header__section"><h2>English Time</h2></section>
-  <section class="main-header__section"><h2>section</h2></section>
-  <nav class="nav">
-    <ul class="ul"> 
-      <li class="li">
-        <a href="./blog" class="link">Blog</a>
+  <section class="main-header__section">
+    <h2 class="title title--h2 title--light-color">English Time</h2>
+  </section>
+   <nav class="main-header__nav">
+    <ul class="main-header__ul"> 
+      <li class="main-header__li">
+        <a href="/" class="a a--main-header">Home</a>
       </li>
-      <li class="li">
-        <a href="./about" class="link">Acerca de</a>
+      <li class="main-header__li">
+        <a href="/blog" class="a a--main-header">Blog</a>
+      </li>
+      <li class="main-header__li">
+        <a href="/about" class="a a--main-header">Acerca de</a>
       </li>
       
       {#if $isLoggedIn}
-      <li class="li">
-        <a href="./course" class="link">Curso</a>
+      <li class="main-header__li">
+        <a href="/course" class="a a--main-header">Curso</a>
       </li>
-      <li class="li">
-        <a href="./login/" class="link">Account</a>
+      <li class="main-header__li">
+        <a href="/login/" class="a a--main-header">Account</a>
       </li>
+      <li class="main-header__li">
+        <a href="/results/" class="a a--main-header">Resultados</a>
+      </li> 
       {:else}
-      <li class="li">
-        <a href="./login/" class="link">Login</a>
-      </li>
-        
+      <li class="main-header__li">
+        <a href="/login/" class="a a--main-header">Login</a>
+      </li> 
       {/if}
-      <!-- <li class="li">About</li>
-      <li class="li">no sé</li>
-      <li class="li">Qué</li>
-      <li class="li">Poner</li> -->
     </ul>
   </nav>
 </header>
+
+<style>
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+
+    height: min-content;
+
+  }
+  .main-header__nav, .main-header__section, .main-header__ul {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+
+  }
+  .a--main-header {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* .main-header__nav {
+    background-color: purple;
+  } */
+  .main-header__ul {
+    flex-wrap: wrap;
+    height: 100%;
+    
+    list-style: none;
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+
+  }
+  .a--main-header {
+    position: relative;
+    text-align: center;
+  }
+  
+  .a--main-header:hover::after {
+    position: absolute;
+    content: " ";
+    height: 3px;
+
+    width: 100%;
+    top: 120%;
+
+    background-color: var(--first-color);
+  }
+  .main-header__li:nth-child(odd) .a--main-header:hover { 
+    color: var(--second-color);
+  }
+  .main-header__li:nth-child(odd) .a--main-header:hover::after {
+    position: absolute;
+    content: " ";
+    height: 3px;
+
+    width: 100%;
+    top: 120%;
+
+    background-color: var(--second-color);
+  }
+  
+</style>

@@ -1,14 +1,22 @@
 <script>
   export let data;
-  const {posts} = data
-  // for (const post of posts) {
-  //   const {description, title, date, publishedBy} = post
-  //   console.log(description);
-  //   console.log(title);
-  //   console.log(date);
-  //   console.log(publishedBy);
-  // }
+  const {posts, filtered} = data
+  import BlogCard from '../../lib/components/blog-card.svelte';
+  import { isLoggedIn } from '$lib/stores.js'
+  import { Database } from '$lib/firebase.js'
+  const categorySet = new Set()
+  
+  for (const post of posts) {
+    const {categories} = post
+    for (const category of categories) 
+      categorySet.add(category)
+  }    
 
+  // if ($isLoggedIn) {
+  //   for (const category of categorySet) {
+  //     Database.addData('categories', category, {category})
+  //   }
+  // }  
 </script>
 
 <svelte:head>
@@ -16,18 +24,20 @@
 </svelte:head>
 
 <section class="section">
-  <h1>Blog</h1>
+  <h2 class="title">Post recientes</h2>
 
-  <article class="blogs">
-    <h2>Recent posts</h2>
+  <article class="post-container">
 
     {#each posts as post}
-      {post.title} <br>
-      {post.description} <br>
-      
-      {post.date} <br>
-      {post.publishedBy} <br>
-      
+      <BlogCard 
+        title={post.title}
+        description={post.description}
+        date={post.date}
+        publishedBy={post.publishedBy}
+        route={`/blog/${post.slug}`}
+        categories={post.categories}
+      />
+
     {/each}
 
   </article>

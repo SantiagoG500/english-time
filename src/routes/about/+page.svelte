@@ -1,3 +1,3 @@
 <section class="section">
-  <h1>Acerca de</h1>
+  <h2 class="title">Acerca de</h2>
 </section>
