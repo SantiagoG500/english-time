@@ -162,6 +162,19 @@
 
 
 <style>
+  .selected{
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: 500;
+
+    border: 2px solid var(--dark-bg);
+    border-radius: .5em;
+    padding: .5em;
+
+    color: var(--light-bg);
+    border: 1px solid var(--light-bg);
+    background-color: var(--first-color);
+  }
   .controller {
     display: flex;
     flex-wrap: wrap;
