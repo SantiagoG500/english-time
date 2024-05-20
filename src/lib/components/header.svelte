@@ -8,28 +8,28 @@
    <nav class="main-header__nav">
     <ul class="main-header__ul"> 
       <li class="main-header__li">
-        <a href="/" class="a a--main-header">Home</a>
+        <a href="/" class="a a--main-header text">Home</a>
       </li>
       <li class="main-header__li">
-        <a href="/blog" class="a a--main-header">Blog</a>
+        <a href="/blog" class="a a--main-header text">Blog</a>
       </li>
       <li class="main-header__li">
-        <a href="/about" class="a a--main-header">Acerca de</a>
+        <a href="/about" class="a a--main-header text">Acerca de</a>
       </li>
       
       {#if $isLoggedIn}
       <li class="main-header__li">
-        <a href="/course" class="a a--main-header">Curso</a>
+        <a href="/course" class="a a--main-header text">Curso</a>
       </li>
       <li class="main-header__li">
-        <a href="/login/" class="a a--main-header">Account</a>
+        <a href="/login/" class="a a--main-header text">Account</a>
       </li>
       <li class="main-header__li">
-        <a href="/results/" class="a a--main-header">Resultados</a>
+        <a href="/results/" class="a a--main-header text">Resultados</a>
       </li> 
       {:else}
       <li class="main-header__li">
-        <a href="/login/" class="a a--main-header">Login</a>
+        <a href="/login/" class="a a--main-header text">Login</a>
       </li> 
       {/if}
     </ul>
@@ -37,13 +37,17 @@
 </header>
 
 <style>
+
   .main-header {
-    display: flex;
-    flex-direction: column;
-    box-shadow: var(--box-shadow);
+    /* display: flex;
+    flex-direction: column; */
 
+    padding-top: 1em;
+    padding-bottom: 1em;
+    
     height: min-content;
-
+    
+    box-shadow: var(--box-shadow);
   }
   .main-header__nav, .main-header__section, .main-header__ul {
     display: flex;
