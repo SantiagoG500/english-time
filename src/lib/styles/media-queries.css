@@ -1,0 +1,53 @@
+/* Tablets y computadoras portátiles */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .section { 
+    width: 80%;
+  }
+  .main-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .section { 
+    width: 80%;
+  }
+  .main-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+  }
+  .main-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+/* Computadoras de escritorio */
+@media only screen and (min-width: 992px) {
+  .section { 
+    width: 70%;
+  }
+  .main-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+/* Computadoras de escritorio extra grandes */
+@media only screen and (min-width: 1200px) {
+  .section { 
+    width: 60%;
+  }
+  .main-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
