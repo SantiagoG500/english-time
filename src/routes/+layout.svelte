@@ -15,7 +15,7 @@
     $isLoggedIn = !!authUser;
 
     // if ($isLoggedIn) {
-    //   console.log(questions);
+    //   console.log(questions); 
     //   for (const question of questions) {
     //     const q = question.getQuestion()
     //     const a = question.getAnswers()
@@ -24,9 +24,9 @@
     //     const questionT = 'T1'
 
     //     const docData = {question: q, answers: a, correctAnswer: correctA, questionType: questionT, categories}
-    //     console.log(docData);
+        
+    //     Database.addData('questions', q, docData)
     //   }
-    //   Database.addData('questions', q, docData)
     // }
   }); 
 

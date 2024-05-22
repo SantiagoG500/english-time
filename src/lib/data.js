@@ -71,32 +71,32 @@ q9.setCategories('Action verbs');
 
 q10.setQuestion('We ___________ Angry');
 q10.setAnswers(['am', 'is', 'are', 'be']);
-q10.setCorrectAns(q10.getAnswers()[0]);
+q10.setCorrectAns(q10.getAnswers()[2]);
 q10.setCategories('Be Verbs');
 
-q11.setQuestion('He ___________ is a lawyer');
+q11.setQuestion('He ___________ a lawyer');
 q11.setAnswers(['am', 'is', 'are', 'be']);
-q11.setCorrectAns(q11.getAnswers()[0]);
+q11.setCorrectAns(q11.getAnswers()[1]);
 q11.setCategories('Be Verbs');
 
-q12.setQuestion('I ___________ am a doctor');
+q12.setQuestion('I ___________ a doctor');
 q12.setAnswers(['am', 'is', 'are', 'be']);
 q12.setCorrectAns(q12.getAnswers()[0]);
 q12.setCategories('Be Verbs');
 
 q13.setQuestion('She ___________ not scared');
 q13.setAnswers(['am', 'is', 'are', 'be']);
-q13.setCorrectAns(q13.getAnswers()[0]);
+q13.setCorrectAns(q13.getAnswers()[1]);
 q13.setCategories('Be Verbs');
 
-q14.setQuestion('She ___________ is not short');
+q14.setQuestion('She ___________ not short');
 q14.setAnswers(['am', 'is', 'are', 'be']);
-q14.setCorrectAns(q14.getAnswers()[0]);
+q14.setCorrectAns(q14.getAnswers()[1]);
 q14.setCategories('Be Verbs');
 
 q15.setQuestion('They ___________ not here');
 q15.setAnswers(['am', 'is', 'are', 'be']);
-q15.setCorrectAns(q15.getAnswers()[0]);
+q15.setCorrectAns(q15.getAnswers()[2]);
 q15.setCategories('Be Verbs');
 
 q16.setQuestion('I ___________ hungry');
@@ -124,7 +124,7 @@ q19.setAnswers(['potato', 'potatoes']);
 q19.setCorrectAns(q19.getAnswers()[0]);
 q19.setCategories('Nouns');
 
-q20.setQuestion('we have seen maneu  _________ in the bouse.');
+q20.setQuestion('we have seen many  _________ in the bouse.');
 q20.setAnswers(['goose', 'geese']);
 q20.setCorrectAns(q20.getAnswers()[0]);
 q20.setCategories('Nouns');

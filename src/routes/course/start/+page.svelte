@@ -128,11 +128,11 @@
     <div class="controller__go-step">
       <button class="btn" on:click={goPrevQ}>prev</button>
       <button class="btn" on:click={goNextQ}>next</button>
+      {#if everyQuestionAnswered}
+        <button class="btn" on:click={finishAll}>Finalizar Prueba</button>
+      {/if}
     </div>
 
-    {#if everyQuestionAnswered}
-      <button class="btn" on:click={finishAll}>Finalizar Prueba</button>
-    {/if}
   </div>
 
    <ul class="questions">
